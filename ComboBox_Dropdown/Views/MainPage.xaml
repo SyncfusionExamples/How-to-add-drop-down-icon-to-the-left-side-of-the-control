@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ComboBox_Dropdown.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:ComboBox_Dropdown"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="30">
+        <local:CustomComboBox
+            x:Name="comboBox"
+            DataSource="{Binding EmployeeCollection}"
+            DisplayMemberPath="Name"
+            HeightRequest="40"
+            MaximumDropDownHeight="200"
+            ValueChanged="ComboBox_ValueChanged">
+            <local:CustomComboBox.CustomView>
+                <StackLayout
+                    Padding="5,5,5,5"
+                    BackgroundColor="White"
+                    Orientation="Horizontal"
+                    VerticalOptions="Center">
+                    <ImageButton
+                        Padding="5,5,5,5"
+                        BackgroundColor="White"
+                        Clicked="ImageButton_Clicked"
+                        HeightRequest="30"
+                        Source="Dropdown.png"
+                        WidthRequest="30" />
+                    <Label
+                        x:Name="labelText"
+                        FontSize="18"
+                        VerticalTextAlignment="Center" />
+                </StackLayout>
+            </local:CustomComboBox.CustomView>
+            <local:CustomComboBox.DropDownButtonSettings>
+                <comboBox:DropDownButtonSettings Width="0" Height="0" />
+            </local:CustomComboBox.DropDownButtonSettings>
+        </local:CustomComboBox>
+    </StackLayout>
+
+</ContentPage>
